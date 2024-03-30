@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct PopularMovieResponseEntity : Decodable {
-    let result: [PopularMovieEntity]
+struct PopularMovieResponseEntity: Decodable {
+    let results: [PopularMovieEntity]
 }

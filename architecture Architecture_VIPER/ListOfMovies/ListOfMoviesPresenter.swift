@@ -14,23 +14,22 @@ protocol ListOfMoviesUI : AnyObject {
 }
 
 class ListOfMoviesPresenter {
-    var ui : ListOfMoviesUI? //creamos nuestra propiedad ui para poder usar el protocolo ListOfMoviesUI y este sera opcional
-    //Esto va de la mano
-    private let listOfMoviesInteractor : ListOfMoviesInteractor //creamos una referencia o propiedad a nuestro interactor
+    var ui: ListOfMoviesUI?
+    private let listOfMoviesInteractor: ListOfMoviesInteractor
+    
     init(listOfMoviesInteractor: ListOfMoviesInteractor) {
         self.listOfMoviesInteractor = listOfMoviesInteractor
     }
     
-    //hasta init
-    
-    //creamos el metodo onViewAppear, este emtodo llamara el interactor para realizar la solicitud http
-    
     func onViewAppear() {
-        
-        Task {
-            let models = await listOfMoviesInteractor.getListOfMovies() //aqui en la constante models se guarda lo que arroje la solicitud del interactor
-            ui?.update(movies: models.result) //le pasamos el modelo
+        listOfMoviesInteractor.getListOfMovies { [weak self] result in
+            switch result {
+            case .success(let models):
+                self?.ui?.update(movies: models.results)
+            case .failure(let error):
+                print("Error fetching movies: \(error)")
+            }
         }
-        
     }
 }
+

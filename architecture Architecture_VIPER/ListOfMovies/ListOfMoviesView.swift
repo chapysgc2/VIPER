@@ -11,8 +11,8 @@ import UIKit
 
 class ListOfMoviesView : UIViewController {
     
-    let presenter : ListOfMoviesPresenter?
-    
+    var presenter: ListOfMoviesPresenter? // Declarar como variable
+
     
     init(presenter: ListOfMoviesPresenter) {
            self.presenter = presenter

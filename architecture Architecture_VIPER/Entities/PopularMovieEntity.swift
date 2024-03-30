@@ -7,17 +7,16 @@
 
 import Foundation
 
-struct PopularMovieEntity : Decodable {
-    var id :Int
-    var title : String
-    var overview : String
-    var imageURL : String
-    var votes : Double
+struct PopularMovieEntity: Decodable {
+    let id: Int
+    let title: String
+    let overview: String
+    let imageURL: String
+    let votes: Double
     
-    enum Codingkeys : String, CodingKey {
+    enum CodingKeys: String, CodingKey {
         case id, title, overview
         case imageURL = "poster_path"
-        case votes
+        case votes = "vote_average"
     }
-    
 }
