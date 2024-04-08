@@ -8,7 +8,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "76A09DC6-3403-4D2D-87B3-2D52BDC1A9F0"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "architecture Architecture_VIPER/ListOfMovies/ListOfMoviesView.swift"

@@ -17,12 +17,8 @@ class ListOfMoviesRouter {
         // Creamos una instancia de ListOfMoviesPresenter
         let interactor = ListOfMoviesInteractor()
         let presenter = ListOfMoviesPresenter(listOfMoviesInteractor: interactor)
-
         // Creamos una instancia de ListOfMoviesView pasando el presenter como argumento
         let view = ListOfMoviesView(presenter: presenter)
-        //let interactor = ListOfMoviesInteractor() // Interactor
-        //let presenter = ListOfMoviesPresenter(listOfMoviesInteractor: interactor) // Presenter
-        
         // Asignamos la vista y el presenter
         presenter.ui = view
         view.presenter = presenter
