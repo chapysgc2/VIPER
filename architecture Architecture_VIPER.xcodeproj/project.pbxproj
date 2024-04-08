@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA31144B2BBE2F51002A6ED7 /* MovieCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA31144A2BBE2F51002A6ED7 /* MovieCellView.swift */; };
+		BA31144E2BBE42F0002A6ED7 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = BA31144D2BBE42F0002A6ED7 /* Kingfisher */; };
 		BA8743BA2BB113C900FCEF67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8743B92BB113C900FCEF67 /* AppDelegate.swift */; };
 		BA8743BC2BB113C900FCEF67 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8743BB2BB113C900FCEF67 /* SceneDelegate.swift */; };
 		BA8743BE2BB113C900FCEF67 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8743BD2BB113C900FCEF67 /* ViewController.swift */; };
@@ -42,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BA31144A2BBE2F51002A6ED7 /* MovieCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCellView.swift; sourceTree = "<group>"; };
 		BA8743B62BB113C900FCEF67 /* architecture Architecture_VIPER.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "architecture Architecture_VIPER.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA8743B92BB113C900FCEF67 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA8743BB2BB113C900FCEF67 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA31144E2BBE42F0002A6ED7 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,6 +152,7 @@
 				BA8743EF2BB2123600FCEF67 /* ListOfMoviesPresenter.swift */,
 				BA8743F12BB2124D00FCEF67 /* ListOfMoviesInteractor.swift */,
 				BA8743F32BB2127000FCEF67 /* ListOfMoviesRouter.swift */,
+				BA31144A2BBE2F51002A6ED7 /* MovieCellView.swift */,
 			);
 			path = ListOfMovies;
 			sourceTree = "<group>";
@@ -177,6 +182,9 @@
 			dependencies = (
 			);
 			name = "architecture Architecture_VIPER";
+			packageProductDependencies = (
+				BA31144D2BBE42F0002A6ED7 /* Kingfisher */,
+			);
 			productName = "architecture Architecture_VIPER";
 			productReference = BA8743B62BB113C900FCEF67 /* architecture Architecture_VIPER.app */;
 			productType = "com.apple.product-type.application";
@@ -249,6 +257,9 @@
 				Base,
 			);
 			mainGroup = BA8743AD2BB113C900FCEF67;
+			packageReferences = (
+				BA31144C2BBE3FA9002A6ED7 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = BA8743B72BB113C900FCEF67 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -296,6 +307,7 @@
 				BA8743F92BB263ED00FCEF67 /* PopularMovieResponseEntity.swift in Sources */,
 				BA8743F72BB2182300FCEF67 /* PopularMovieEntity.swift in Sources */,
 				BA8743EE2BB2122E00FCEF67 /* ListOfMoviesView.swift in Sources */,
+				BA31144B2BBE2F51002A6ED7 /* MovieCellView.swift in Sources */,
 				BA8743BE2BB113C900FCEF67 /* ViewController.swift in Sources */,
 				BA8743BA2BB113C900FCEF67 /* AppDelegate.swift in Sources */,
 				BA8743C42BB113C900FCEF67 /* architecture_Architecture_VIPER.xcdatamodeld in Sources */,
@@ -637,6 +649,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BA31144C2BBE3FA9002A6ED7 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.11.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BA31144D2BBE42F0002A6ED7 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BA31144C2BBE3FA9002A6ED7 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		BA8743C22BB113C900FCEF67 /* architecture_Architecture_VIPER.xcdatamodeld */ = {
