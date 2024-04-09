@@ -15,13 +15,18 @@ class ListOfMoviesRouter {
         
         // Creamos las instancias de los componentes de VIPER
         // Creamos una instancia de ListOfMoviesPresenter
-        let interactor = ListOfMoviesInteractor()
+        let interactor = ListOfMoviesInteractor() // Usando ListofMoviesInteractor que hace la solicitud httpp
+
+        //let interactor = ListOfMoviesInteractorMock() // Usando ListofMoviesInteractorMock que es estatico
         let presenter = ListOfMoviesPresenter(listOfMoviesInteractor: interactor)
+
         // Creamos una instancia de ListOfMoviesView pasando el presenter como argumento
         let view = ListOfMoviesView(presenter: presenter)
         // Asignamos la vista y el presenter
+        //view.presenter = presenter
+        
         presenter.ui = view
-        view.presenter = presenter
+
         
         // Configuramos la vista como la raíz del controlador de la ventana principal
         window?.rootViewController = view
