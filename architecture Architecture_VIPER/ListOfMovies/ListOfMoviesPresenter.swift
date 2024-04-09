@@ -7,29 +7,42 @@
 
 import Foundation
 
+protocol ListOfMoviesPresentable : AnyObject {
+    
+    var ui : ListOfMoviesUI? { get }
+    var viewModels : [ViewModel] { get }
+    func onViewAppear() async
+
+}
+
 protocol ListOfMoviesUI : AnyObject {
     
-    func update(movies : [PopularMovieEntity])
+    func update(movies : [ViewModel])
     
 }
 
-class ListOfMoviesPresenter {
-    var ui: ListOfMoviesUI?
-    private let listOfMoviesInteractor: ListOfMoviesInteractor
+class ListOfMoviesPresenter : ListOfMoviesPresentable {
+    weak var ui: ListOfMoviesUI?
+    private let listOfMoviesInteractor: ListofMoviesInteractable
+    var viewModels : [ViewModel] = []
     
-    init(listOfMoviesInteractor: ListOfMoviesInteractor) {
+    private let mapper : Mapper
+
+    init(listOfMoviesInteractor: ListofMoviesInteractable, mapper : Mapper = Mapper()) {
         self.listOfMoviesInteractor = listOfMoviesInteractor
+        self.mapper = mapper
     }
     
-    func onViewAppear() {
-        listOfMoviesInteractor.getListOfMovies { [weak self] result in
-            switch result {
-            case .success(let models):
-                self?.ui?.update(movies: models.results)
-            case .failure(let error):
-                print("Error fetching movies: \(error)")
-            }
+    func onViewAppear() async {
+        do {
+            let response = try await listOfMoviesInteractor.getListOfMovies()
+            let models = response.results
+            viewModels = models.map(mapper.map(entity:))
+            ui?.update(movies: viewModels)
+        } catch {
+            print("Error fetching movies: \(error)")
         }
     }
+
 }
 
