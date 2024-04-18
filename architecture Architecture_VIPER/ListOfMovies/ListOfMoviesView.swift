@@ -49,8 +49,18 @@ class ListOfMoviesView: UIViewController {
             moviesTableView.topAnchor.constraint(equalTo: view.topAnchor)
         ])
         moviesTableView.dataSource = self
+        moviesTableView.delegate = self
     }
 }
+
+
+extension ListOfMoviesView : UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.onTapCell(atIndex: indexPath.row)
+    }
+}
+
+
 
 extension ListOfMoviesView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
