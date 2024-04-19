@@ -9,54 +9,47 @@ import Foundation
 import UIKit
 import Kingfisher
 
-class DetailView : UIViewController {
+class DetailView: UIViewController {
     
-    private let presenter : DetailPresentable
+    private let presenter: DetailPresentable
     
-    let movieImageView : UIImageView = {
+    let movieImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        
         return imageView
-    } ()
+    }()
     
-    let movieName : UILabel = {
+    let movieName: UILabel = {
         let label = UILabel()
         label.numberOfLines = 2
-        label.font = .systemFont(ofSize: 32, weight: .bold, width: .condensed)
+        label.font = .systemFont(ofSize: 32, weight: .bold)
         label.translatesAutoresizingMaskIntoConstraints = false
-        
         return label
-        
-    } ()
+    }()
     
-    let movieDescription : UILabel = {
+    let movieDescription: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.font = .systemFont(ofSize: 12, weight: .bold, width: .standard)
+        label.font = .systemFont(ofSize: 12, weight: .regular)
         label.translatesAutoresizingMaskIntoConstraints = false
-        
         return label
-        
-    } ()
+    }()
     
     init(presenter: DetailPresentable) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-    
     override func viewDidLoad() {
-        self.viewDidLoad()
+        super.viewDidLoad()
         view.backgroundColor = .white
         setupView()
         presenter.onViewAppear()
-        
     }
     
     func setupView() {
@@ -70,26 +63,22 @@ class DetailView : UIViewController {
             movieImageView.heightAnchor.constraint(equalToConstant: 200),
             movieImageView.widthAnchor.constraint(equalToConstant: 300),
             
-            movieName.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant : 20),
-            movieName.trailingAnchor.constraint(equalTo: view.leadingAnchor, constant : -20),
-            movieName.topAnchor.constraint(equalTo: movieImageView.bottomAnchor, constant : 20),
+            movieName.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            movieName.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            movieName.topAnchor.constraint(equalTo: movieImageView.bottomAnchor, constant: 20),
             
-            movieDescription.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant : 20),
-            movieDescription.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant : -20),
+            movieDescription.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            movieDescription.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             movieDescription.topAnchor.constraint(equalTo: movieName.bottomAnchor, constant: 20)
         ])
     }
-
-    
 }
 
-extension DetailView : DetailPresenterUI {
+extension DetailView: DetailPresenterUI {
     func updateUI(viewModel: DetailMovieViewModel) {
         movieImageView.kf.setImage(with: viewModel.backdropPath)
         movieName.text = viewModel.title
-        movieDescription.text = viewModel.title.description
-        
+        movieDescription.text = viewModel.overview
     }
-    
-    
 }
+

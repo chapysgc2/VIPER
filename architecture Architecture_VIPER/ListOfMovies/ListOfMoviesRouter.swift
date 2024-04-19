@@ -22,6 +22,7 @@ class ListOfMoviesRouter : ListOfMoviesRouting {
     var detailRouter : DetailRouting?
     var listOfMoviesView : ListOfMoviesView?
 
+
     
     // Método para mostrar la lista de películas
     func showListOfMovies(window: UIWindow?) {
@@ -40,6 +41,7 @@ class ListOfMoviesRouter : ListOfMoviesRouting {
         //view.presenter = presenter
         
         presenter.ui = listOfMoviesView
+        self.listOfMoviesView = listOfMoviesView  // Configurar listOfMoviesView aquí
 
         
         // Configuramos la vista como la raíz del controlador de la ventana principal
@@ -48,8 +50,10 @@ class ListOfMoviesRouter : ListOfMoviesRouting {
     }
     
     func showDetailMovie(withMovieId movieId : String){
-        
-        guard let fromViewController = listOfMoviesView else {
+        print("listOfMoviesView: \(String(describing: listOfMoviesView))")
+
+        guard let fromViewController = listOfMoviesView
+        else {
             return
         }
         
